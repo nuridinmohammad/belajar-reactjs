@@ -1,5 +1,5 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -13,12 +13,13 @@ export default defineConfig({
         task: "task.html",
         counter: "counter.html",
         note: "note.html",
+        "note-v1": "note-v1.html",
         profile: "profile.html",
         timer: "timer.html",
         guestbook: "guestbook.html",
         product: "product.html",
-        online: "online.html"
-      }
-    }
-  }
-})
+        online: "online.html",
+      },
+    },
+  },
+});
