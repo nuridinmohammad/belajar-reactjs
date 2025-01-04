@@ -14,6 +14,8 @@ export default defineConfig({
         counter: "counter.html",
         note: "note.html",
         "note-v1": "note-v1.html",
+        "note-v2": "note-v2.html",
+        "note-v3": "note-v3.html",
         profile: "profile.html",
         timer: "timer.html",
         guestbook: "guestbook.html",
