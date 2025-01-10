@@ -1,56 +1,60 @@
-import {useContext, useState} from "react";
-import {NotesDispatchContext} from "./NoteContext.jsx";
+import { memo, useContext, useState } from "react";
+import { NotesDispatchContext } from "./NoteContext.jsx";
 
-export default function Note({note}) {
-    const [isEditing, setIsEditing] = useState(false);
-    const dispatch = useContext(NotesDispatchContext);
+function Note({ note }) {
+  const [isEditing, setIsEditing] = useState(false);
+  const dispatch = useContext(NotesDispatchContext);
 
-    let component;
+  let component;
 
-    function handleChangeText(e){
-        dispatch({
-            ...note,
-            type: 'CHANGE_NOTE',
-            text: e.target.value
-        })
-    }
+  function handleChangeText(e) {
+    dispatch({
+      ...note,
+      type: "CHANGE_NOTE",
+      text: e.target.value,
+    });
+  }
 
-    if(isEditing) {
-        component = (
-            <>
-                <input value={note.text} onChange={handleChangeText}/>
-                <button onClick={() => setIsEditing(false)}>Save</button>
-            </>
-        )
-    } else {
-        component = (
-            <>
-                {note.text}
-                <button onClick={() => setIsEditing(true)}>Edit</button>
-            </>
-        )
-    }
+  if (isEditing) {
+    component = (
+      <>
+        <input value={note.text} onChange={handleChangeText} />
+        <button onClick={() => setIsEditing(false)}>Save</button>
+      </>
+    );
+  } else {
+    component = (
+      <>
+        {note.text}
+        <button onClick={() => setIsEditing(true)}>Edit</button>
+      </>
+    );
+  }
 
-    function handleChangeDone(e){
-        dispatch({
-            ...note,
-            type: 'CHANGE_NOTE',
-            done: e.target.checked
-        })
-    }
+  function handleChangeDone(e) {
+    dispatch({
+      ...note,
+      type: "CHANGE_NOTE",
+      done: e.target.checked,
+    });
+  }
 
-    function handleDelete(){
-        dispatch({
-            type: 'DELETE_NOTE',
-            id: note.id
-        })
-    }
+  function handleDelete() {
+    dispatch({
+      type: "DELETE_NOTE",
+      id: note.id,
+    });
+  }
 
-    return (
-        <label>
-            <input type="checkbox" checked={note.done} onChange={handleChangeDone}/>
-            {component}
-            <button onClick={handleDelete}>Delete</button>
-        </label>
-    )
+  console.info("Note rendering..");
+
+  return (
+    <label>
+      <input type="checkbox" checked={note.done} onChange={handleChangeDone} />
+      {component}
+      <button onClick={handleDelete}>Delete</button>
+    </label>
+  );
 }
+
+export default memo(Note);
