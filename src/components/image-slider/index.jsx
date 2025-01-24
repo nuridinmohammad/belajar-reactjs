@@ -35,7 +35,7 @@ export default function ImageSlider({ url, limit = 5, page = 1 }) {
     if (url !== "") fetchImages(url);
     () => fetchImages(url);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [url]);
+  }, []);
 
   if (isLoading) return <span>Loading...</span>;
   if (errorMessage !== null) return <span>{errorMessage.message}</span>;
