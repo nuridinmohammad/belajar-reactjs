@@ -21,6 +21,7 @@ export default defineConfig({
         guestbook: "guestbook.html",
         product: "product.html",
         online: "online.html",
+        "memory-game": "memory-game.html",
       },
     },
   },
